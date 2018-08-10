@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 (http://www.altova.com) by zhanght (allinpdy) -->
+<xs:schema xmlns="http://www.allinfinance.com/dataspec/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.allinfinance.com/dataspec/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:include schemaLocation="serviceDoc.xsd"/>
+    <xs:element name="SERVICE_ID" fixed="17020" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>交易服务码</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="REQUEST">
+		<xs:sequence>
+			<xs:element name="CARD_NO">
+				<xs:annotation>
+					<xs:documentation>卡号</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="19"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ITEM_ID">
+				<xs:annotation>
+					<xs:documentation>礼品编号</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="12"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="EXCH_TYPE">
+				<xs:annotation>
+					<xs:documentation>兑换方式</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ITEM_CNT" type="N">
+				<xs:annotation>
+					<xs:documentation>兑换礼品数量</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SEND_IND">
+				<xs:annotation>
+					<xs:documentation>寄送地址方式</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:length value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RECEIVE_NAME" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>收件人姓名</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:minLength value="0"/>
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RECEIVE_MOBILE" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>收件人手机</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:minLength value="0"/>
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RECEIVE_PHONE" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>收件人座机</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:minLength value="0"/>
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RECEIVE_ADDRESS" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>收件人地址</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:minLength value="0"/>
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADDR_TYPE" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>寄送地址类型</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:length value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

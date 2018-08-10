@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding = "UTF-8"?>
+<xs:schema xmlns="http://www.allinfinance.com/dataspec/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.allinfinance.com/dataspec/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:include schemaLocation="serviceDoc.xsd"/>
+    <xs:element name="SERVICE_ID" fixed="16040" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>交易服务码</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="REQUEST">
+        <xs:sequence>
+            <xs:element name="CARD_NO">
+                <xs:annotation>
+                    <xs:documentation>卡号</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="19"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ID_TYPE">
+                <xs:annotation>
+                    <xs:documentation>证件类型</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ID_NO">
+                <xs:annotation>
+                    <xs:documentation>证件号码</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="30"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="MOBILE_NO">
+                <xs:annotation>
+                    <xs:documentation>手机号码</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="20"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="HOME_PHONE">
+                <xs:annotation>
+                    <xs:documentation>家庭电话</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="20"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="CUST_NAME">
+                <xs:annotation>
+                    <xs:documentation>客户姓名</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="80"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="BIRTHDAY" type="D8">
+                <xs:annotation>
+                    <xs:documentation>出生年月</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CORP_PHONE">
+                <xs:annotation>
+                    <xs:documentation>单位电话</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="20"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="NAME">
+                <xs:annotation>
+                    <xs:documentation>直属联系人姓名</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="80"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="PHONE">
+                <xs:annotation>
+                    <xs:documentation>直属联系人电话</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="20"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Q_PIN">
+                <xs:annotation>
+                    <xs:documentation>查询密码</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="H">
+                        <xs:maxLength value="16"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="P_PIN">
+                <xs:annotation>
+                    <xs:documentation>交易密码</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="H">
+                        <xs:maxLength value="16"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="EXPIRE_DATE" type="D4">
+                <xs:annotation>
+                    <xs:documentation>有效期</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CVV2">
+                <xs:annotation>
+                    <xs:documentation>CVV2</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="3"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

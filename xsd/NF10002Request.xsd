@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding = "UTF-8"?>
+<xs:schema xmlns="http://www.allinfinance.com/dataspec/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.allinfinance.com/dataspec/"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="serviceDoc.xsd" />
+    <xs:element name="SERVICE_ID" fixed="10002" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>交易服务码</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+	<xs:complexType name="REQUEST">
+		<xs:sequence>
+			<xs:element name="MCHT_CD">
+				<xs:annotation>
+					<xs:documentation>商户号</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="30" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SEARCH_DATE" type="D8">
+				<xs:annotation>
+					<xs:documentation>查询日期</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- start -->
+			<xs:element name="ITEMS">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ITEM" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="TOTAL_TYPE">
+										<xs:annotation>
+											<xs:documentation>汇总类型</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="C">
+												<xs:maxLength value="1" />
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="TOTAL_INTERVAL_VALUE" type="N">
+										<xs:annotation>
+											<xs:documentation>汇总时段值</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

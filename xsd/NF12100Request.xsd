@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding = "UTF-8"?>
+<xs:schema xmlns="http://www.allinfinance.com/dataspec/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.allinfinance.com/dataspec/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:include schemaLocation="serviceDoc.xsd"/>
+    <xs:element name="SERVICE_ID" fixed="12100" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>交易服务码</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="REQUEST">
+        <xs:sequence>
+            <xs:element name="CARD_NO">
+                <xs:annotation>
+                    <xs:documentation>卡号</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="19"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="CURR_CD">
+                <xs:annotation>
+                    <xs:documentation>币种</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="3"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="OPT">
+                <xs:annotation>
+                    <xs:documentation>功能码</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="DD_IND">
+                <xs:annotation>
+                    <xs:documentation>约定还款类型</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="DD_BANK_NAME">
+                <xs:annotation>
+                    <xs:documentation>约定还款银行名称</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="80"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="DD_BANK_BRANCH">
+                <xs:annotation>
+                    <xs:documentation>约定还款开户行号</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="9"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="DD_BANK_ACCT_NO">
+                <xs:annotation>
+                    <xs:documentation>约定还款扣款账号</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="40"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="DD_BANK_ACCT_NAME">
+                <xs:annotation>
+                    <xs:documentation>约定还款扣款账户姓名</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="80"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

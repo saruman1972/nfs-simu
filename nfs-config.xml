@@ -1,0 +1,7 @@
+<nfs-config>
+    <ip>10.252.15.72</ip>
+    <port>7777</port>
+    <pik>ABCDEF0123456789ABCDEF0123456789</pik>
+    <headLen>6</headLen>
+    <format>json</format>
+</nfs-config>

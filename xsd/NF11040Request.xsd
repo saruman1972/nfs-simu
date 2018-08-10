@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding = "UTF-8"?>
+<xs:schema xmlns="http://www.allinfinance.com/dataspec/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.allinfinance.com/dataspec/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:include schemaLocation="serviceDoc.xsd"/>
+    <xs:element name="SERVICE_ID" fixed="11040" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>交易服务码</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="REQUEST">
+        <xs:sequence>
+            <xs:element name="ID_TYPE">
+                <xs:annotation>
+                    <xs:documentation>证件类型</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ID_NO">
+                <xs:annotation>
+                    <xs:documentation>证件号码</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="30"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="OPT">
+                <xs:annotation>
+                    <xs:documentation>操作行动码</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="FIRSTROW" type="N">
+                <xs:annotation>
+                    <xs:documentation>开始位置</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="LASTROW" type="N">
+                <xs:annotation>
+                    <xs:documentation>结束位置</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RELATIONSHIP">
+                <xs:annotation>
+                    <xs:documentation>与持卡人关系</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="NAME">
+                <xs:annotation>
+                    <xs:documentation>姓名</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="80"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="GENDER">
+                <xs:annotation>
+                    <xs:documentation>性别</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="MOBILE_NO">
+                <xs:annotation>
+                    <xs:documentation>移动电话</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="20"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="BIRTHDAY" type="D8">
+                <xs:annotation>
+                    <xs:documentation>生日</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CORP_NAME">
+                <xs:annotation>
+                    <xs:documentation>公司名称</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="80"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="CONTACT_ID_TYPE">
+                <xs:annotation>
+                    <xs:documentation>联系人证件类型</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="CONTACT_ID_NO">
+                <xs:annotation>
+                    <xs:documentation>联系人证件号码</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="30"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="CORP_PHONE">
+                <xs:annotation>
+                    <xs:documentation>公司电话</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="20"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="CORP_FAX">
+                <xs:annotation>
+                    <xs:documentation>公司传真</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="20"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="CORP_POST">
+                <xs:annotation>
+                    <xs:documentation>公司职务</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="C">
+                        <xs:maxLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

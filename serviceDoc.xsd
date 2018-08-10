@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 (http://www.altova.com) by zhanght (allinpdy) -->
+<xs:schema xmlns="http://www.allinfinance.com/dataspec/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.allinfinance.com/dataspec/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="servicePublic.xsd"/>
+	<xs:element name="SERVICE" type="SERVICE_TYPE"/>
+	<xs:complexType name="SERVICE_TYPE">
+		<xs:sequence>
+			<xs:element name="SERVICE_HEADER" type="SERVICE_HEADER_TYPE"/>
+			<xs:element name="SERVICE_BODY" type="SERVICE_BODY_TYPE"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SERVICE_HEADER_TYPE">
+		<xs:annotation>
+			<xs:documentation>头信息</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SERVICE_SN">
+				<xs:annotation>
+					<xs:documentation>交易流水号</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:length value="19"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element ref="SERVICE_ID">
+				<xs:annotation>
+					<xs:documentation>交易服务码</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ORG">
+				<xs:annotation>
+					<xs:documentation>请求方机构号</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:length value="12"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CHANNEL_ID">
+				<xs:annotation>
+					<xs:documentation>服务渠道编号</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:length value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="OP_ID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>操作员号</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="8"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="REQUST_TIME" type="T">
+				<xs:annotation>
+					<xs:documentation>交易请求时间</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="VERSION_ID" fixed="10">
+				<xs:annotation>
+					<xs:documentation>版本号</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:length value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="MAC" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>信息安全码MAC</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="14"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RES_SERVICE_SN" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>通联发卡系统交易流水号</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:length value="19"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RES_SERVICE_TIME" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>通联发卡系统交易响应时间戳</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:length value="14"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SERV_RESPONSE" type="SERV_RESPONSE_TYPE" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SERV_RESPONSE_TYPE">
+		<xs:annotation>
+			<xs:documentation>返回报文中处理状态</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="STATUS" type="STATUS_TYPE">
+				<xs:annotation>
+					<xs:documentation>服务状态</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CODE">
+				<xs:annotation>
+					<xs:documentation>错误码</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:length value="4"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DESC">
+				<xs:annotation>
+					<xs:documentation>错误描述</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:minLength value="0"/>
+						<xs:maxLength value="80"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SERVICE_BODY_TYPE">
+		<xs:sequence>
+			<xs:element name="EXT_ATTRIBUTES" type="EXT_ATTRIBUTES_TYPE"/>
+			<xs:element name="REQUEST" type="REQUEST"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EXT_ATTRIBUTES_TYPE">
+		<xs:sequence>
+			<xs:element name="AUTH" type="AUTH_TYPE" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AUTH_TYPE">
+		<xs:sequence>
+			<xs:element name="ID_TYPE" type="ID_TYPE" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>证件类型</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ID_NO" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>证件号码</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="30"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="MOBILE_NO" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>手机号码</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="HOME_PHONE" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>家庭电话</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CUST_NAME" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>客户姓名</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="80"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="BIRTHDAY" type="D8" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>出生年月</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CORP_PHONE" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>单位电话</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="NAME" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>直属联系人姓名</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="80"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PHONE" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>直属联系人电话</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Q_PIN" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>查询密码</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="H">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="16"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="P_PIN" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>交易密码</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="H">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="16"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

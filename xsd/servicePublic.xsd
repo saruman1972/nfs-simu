@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 (http://www.altova.com) by zhanght (allinpdy) -->
+<xs:schema xmlns="http://www.allinfinance.com/dataspec/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.allinfinance.com/dataspec/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:simpleType name="B0">
+		<xs:annotation>
+			<xs:documentation>不带小数的金额</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="B2">
+		<xs:annotation>
+			<xs:documentation>2位的日期格式</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="B">
+		<xs:annotation>
+			<xs:documentation>金额字段</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="D8" id="D">
+		<xs:annotation>
+			<xs:documentation>8位的日期格式</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="D6">
+		<xs:annotation>
+			<xs:documentation>6位日期格式</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="D4">
+		<xs:annotation>
+			<xs:documentation>4位日期格式</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="H">
+		<xs:annotation>
+			<xs:documentation>十六进制数据</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+            <xs:pattern value="^[0-9a-fA-F]*$"/>
+        </xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="T">
+		<xs:annotation>
+			<xs:documentation>时间戳</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C">
+			<xs:length value="14"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C">
+		<xs:annotation>
+			<xs:documentation>字符格式</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="N">
+		<xs:annotation>
+			<xs:documentation>数字格式</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="STATUS_TYPE">
+		<xs:annotation>
+			<xs:documentation>返回服务状态</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="F"/>
+			<xs:enumeration value="S"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CHANNEL_ID">
+		<xs:annotation>
+			<xs:documentation>服务渠道编号</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+			<xs:enumeration value="03"/>
+			<xs:enumeration value="04"/>
+			<xs:enumeration value="05"/>
+			<xs:enumeration value="06"/>
+			<xs:enumeration value="07"/>
+			<xs:enumeration value="08"/>
+			<xs:enumeration value="09"/>
+			<xs:enumeration value="10"/>
+			<xs:enumeration value="11"/>
+			<xs:enumeration value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ID_TYPE">
+		<xs:annotation>
+			<xs:documentation>证件类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="I"/>
+			<xs:enumeration value="T"/>
+			<xs:enumeration value="S"/>
+			<xs:enumeration value="P"/>
+			<xs:enumeration value="L"/>
+			<xs:enumeration value="O"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RTF_STATE">
+		<xs:annotation>
+			<xs:documentation>卡申请状态</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="3"/>
+			<xs:enumeration value="A01"/>
+			<xs:enumeration value="A03"/>
+			<xs:enumeration value="A05"/>
+			<xs:enumeration value="B01"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CURR_CD">
+		<xs:annotation>
+			<xs:documentation>币种</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="3"/>
+			<xs:enumeration value="156"/>
+			<xs:enumeration value="840"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GRACE_DAYS_FULL_IND">
+		<xs:annotation>
+			<xs:documentation>是否已全额还款</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="Y"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="STMT_FLAG">
+		<xs:annotation>
+			<xs:documentation>账单标志</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="Y"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ADDRESS_TYPE">
+		<xs:annotation>
+			<xs:documentation>地址类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="H"/>
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="S"/>
+			<xs:enumeration value="R"/>
+			<xs:enumeration value="O"/>
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="STMT_MEDIA_TYPE">
+		<xs:annotation>
+			<xs:documentation>账单标志</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="P"/>
+			<xs:enumeration value="E"/>
+			<xs:enumeration value="B"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DUAL_BILLING_FLAG">
+		<xs:annotation>
+			<xs:documentation>本币溢缴款还外币指示</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="N"/>
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="F"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LOAN_TYPE">
+		<xs:annotation>
+			<xs:documentation>分期类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="R"/>
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="B"/>
+			<xs:enumeration value="P"/>
+			<xs:enumeration value="M"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LOAN_STATUS">
+		<xs:annotation>
+			<xs:documentation>分期状态</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="I"/>
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="T"/>
+			<xs:enumeration value="F"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LOAN_FEE_METHOD">
+		<xs:annotation>
+			<xs:documentation>分期手续费收取方式</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="F"/>
+			<xs:enumeration value="E"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EXCH_TYPE">
+		<xs:annotation>
+			<xs:documentation>兑换方式</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PASSWDTYPE">
+		<xs:annotation>
+			<xs:documentation>密码类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="Q"/>
+			<xs:enumeration value="P"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="POS_PIN_VERIFY_IND">
+		<xs:annotation>
+			<xs:documentation>是否消费凭密</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="Y"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="POS_PIN_VERIFY_IND">
+		<xs:annotation>
+			<xs:documentation>是否消费凭密</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="Y"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ACTIVATE_IND">
+		<xs:annotation>
+			<xs:documentation>是否已激活</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="Y"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BSC_SUPP_IND">
+		<xs:annotation>
+			<xs:documentation>主附卡标识</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="B"/>
+			<xs:enumeration value="S"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RELATIONSHIP_TO_BSC">
+		<xs:annotation>
+			<xs:documentation>与主卡持卡人关系</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="F"/>
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="B"/>
+			<xs:enumeration value="S"/>
+			<xs:enumeration value="L"/>
+			<xs:enumeration value="W"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RENEW_IND">
+		<xs:annotation>
+			<xs:documentation>续卡标识</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="W"/>
+			<xs:enumeration value="N"/>
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="B"/>
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="D"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CORP_POST">
+		<xs:annotation>
+			<xs:documentation>公司职务</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="B"/>
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="D"/>
+			<xs:enumeration value="E"/>
+			<xs:enumeration value="F"/>
+			<xs:enumeration value="G"/>
+			<xs:enumeration value="H"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TITLE">
+		<xs:annotation>
+			<xs:documentation>称谓</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="B"/>
+			<xs:enumeration value="C"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GENDER">
+		<xs:annotation>
+			<xs:documentation>性别</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="F"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OCCUPATION">
+		<xs:annotation>
+			<xs:documentation>职业</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="B"/>
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="D"/>
+			<xs:enumeration value="E"/>
+			<xs:enumeration value="F"/>
+			<xs:enumeration value="G"/>
+			<xs:enumeration value="H"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MARITAL_STATUS">
+		<xs:annotation>
+			<xs:documentation>婚姻状况</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="S"/>
+			<xs:enumeration value="W"/>
+			<xs:enumeration value="D"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="QUALIFICATION">
+		<xs:annotation>
+			<xs:documentation>教育状况</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="B"/>
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="D"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DD_IND">
+		<xs:annotation>
+			<xs:documentation>约定还款类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="F"/>
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="E"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LOST_REASON">
+		<xs:annotation>
+			<xs:documentation>挂失原因</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CHANGE_REASON">
+		<xs:annotation>
+			<xs:documentation>换卡原因</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+			<xs:enumeration value="03"/>
+			<xs:enumeration value="04"/>
+			<xs:enumeration value="05"/>
+			<xs:enumeration value="06"/>
+			<xs:enumeration value="07"/>
+			<xs:enumeration value="08"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CARD_FETCH_METHOD">
+		<xs:annotation>
+			<xs:documentation>领取方式</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="B"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="URGENT_FLG">
+		<xs:annotation>
+			<xs:documentation>是否加急</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TXN_CODE">
+		<xs:annotation>
+			<xs:documentation>交易码</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+			<xs:enumeration value="03"/>
+			<xs:enumeration value="04"/>
+			<xs:enumeration value="05"/>
+			<xs:enumeration value="06"/>
+			<xs:enumeration value="07"/>
+			<xs:enumeration value="08"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
